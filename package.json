@@ -26,7 +26,8 @@
     "dev:rn": "npm run build:rn -- --watch",
     "dev:qq": "npm run build:qq -- --watch",
     "dev:jd": "npm run build:jd -- --watch",
-    "dev:quickapp": "npm run build:quickapp -- --watch"
+    "dev:quickapp": "npm run build:quickapp -- --watch",
+    "lint": "eslint --ext .js,.tsx,.ts,.jsx src"
   },
   "browserslist": [
     "last 3 versions",
@@ -45,17 +46,28 @@
     "react": "^17.0.0"
   },
   "devDependencies": {
-    "@types/webpack-env": "^1.13.6",
-    "@types/react": "^17.0.2",
-    "@tarojs/mini-runner": "3.4.11",
     "@babel/core": "^7.8.0",
+    "@babel/eslint-parser": "^7.18.2",
+    "@tarojs/mini-runner": "3.4.11",
     "@tarojs/webpack-runner": "3.4.11",
+    "@types/react": "^17.0.2",
+    "@types/webpack-env": "^1.13.6",
     "babel-preset-taro": "3.4.11",
-    "eslint-config-taro": "3.4.11",
     "eslint": "^8.12.0",
-    "eslint-plugin-react": "^7.8.2",
+    "eslint-config-taro": "3.4.11",
     "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-react": "^7.8.2",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.0",
     "stylelint": "^14.4.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --cache"
   }
 }
